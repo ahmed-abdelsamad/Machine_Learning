@@ -1,8 +1,8 @@
-%function [ A ] = fisher(file1)
+function [ A ] = fisher(file1)
 %FISHER Summary of this function goes here
 %   Detailed explanation goes here
 
-file1 = 'data1.txt';
+%file1 = 'data2.txt';
 noOfClasses = 2;
 dataSet1 = fopen(file1);
 
@@ -61,6 +61,24 @@ swI = sw^-1;
 
 w = swI * (meanB - meanA)
 
+tempX = (-w(1)/w(2)) * A(:,1);
+
+bias = (meanA + meanB)/2;
+bias = bias(2);
+
+c={' for '};
 figure
+plot(A(:,1),tempX);
 hold on;scatter(mA(:,1),mA(:,2));
 hold on;scatter(mB(:,1),mB(:,2),'filed');
+title(strcat('Graph',c,file1));
+
+
+figure
+plot(A(:,1),tempX + bias);
+hold on;scatter(mA(:,1),mA(:,2));
+hold on;scatter(mB(:,1),mB(:,2),'filed');
+title(strcat('Graph with Bias',c,file1));
+
+
+end
