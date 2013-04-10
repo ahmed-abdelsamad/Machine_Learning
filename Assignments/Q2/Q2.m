@@ -48,6 +48,12 @@ alph = 'abcdefghijklmnopqrstuvwxyz';
  end
 
 accuracy
-bar(alphabet,accuracy);
+figure;
+labels = {'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'M' 'N' 'O' 'P' 'Q' 'R' 'S' 'T' 'U' 'V' 'W' 'X' 'Y' 'Z'};
+bar([1:26],accuracy);
+axis([0 27 0 3]);
+set(gca, 'XTick', 1:26, 'XTickLabel', labels);
+
+
 
 
