@@ -1,4 +1,4 @@
-function [ err, IX,dist,x] = KNN( input_args )
+function [ sortDist,IX,x,err , K , minK ] = KNN( input_args )
 %KNN Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -32,10 +32,14 @@ err = zeros(K-1,1);
 for k=1:K-1
     error = 0;
     for i=1:K
-        correctLabel = x(i,145)
-        labels = x(IX(i,1:k),145)
-        output = abs(correctLabel - labels); %TODO: fix
-        error = error + sum(output);
+        correctLabel = x(i,145);
+        labels = x(IX(i,1:k),145);
+        predictedLabel = mode(labels);
+        if(correctLabel ~= predictedLabel)
+            error = error + 1;
+        end
     end
     err(k) = error;
+end
+minK = find(err == min(err));
 end
