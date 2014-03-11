@@ -42,4 +42,8 @@ for k=1:K-1
     err(k) = error;
 end
 minK = find(err == min(err));
+
+figure;
+stem(1:K-1,err);
+title('Error against K');
 end
